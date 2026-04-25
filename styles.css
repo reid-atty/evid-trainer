@@ -1,0 +1,98 @@
+:root {
+  --bg: #040406;
+  --panel: #0b0d10;
+  --ink: #e8e8e8;
+  --muted: #9aa0a8;
+  --danger: #ff3b1f;
+  --ok: #39ff88;
+  --warn: #ff7a00;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
+  background: radial-gradient(circle at 20% 10%, #171a1f 0%, var(--bg) 35%);
+  color: var(--ink);
+}
+
+.app {
+  min-height: 100vh;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+.topbar, .chamber, .card, footer {
+  background: var(--panel);
+  border: 1px solid #1f242b;
+  border-radius: 10px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+}
+
+.topbar h1 { color: var(--danger); margin: 0; font-size: 1.1rem; letter-spacing: 0.08em; }
+.metrics { display: flex; gap: 1rem; }
+.metrics div { text-align: right; }
+.metrics span { display: block; font-size: 1.1rem; }
+.metrics label { color: var(--muted); text-transform: uppercase; font-size: 0.65rem; }
+
+.chamber { padding: 1rem; }
+.status-row { display: flex; justify-content: space-between; color: var(--warn); margin-bottom: 1rem; }
+.scenario {
+  min-height: 120px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  border-left: 3px solid var(--danger);
+  padding-left: 0.75rem;
+}
+.feedback {
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid;
+}
+.feedback.ok { border-color: var(--ok); color: var(--ok); }
+.feedback.bad { border-color: var(--danger); color: var(--danger); }
+.hidden { display: none; }
+.hotkeys { color: var(--muted); font-size: 0.83rem; }
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.card { padding: 0.75rem; }
+.card h2 { margin-top: 0; font-size: 0.9rem; color: var(--warn); }
+ul { padding-left: 1rem; margin: 0; }
+
+.aar, .settings {
+  width: min(760px, 92vw);
+  border: 1px solid #30353d;
+  background: #07090c;
+  color: var(--ink);
+  padding: 1rem;
+}
+.aar h2 { color: var(--danger); }
+button {
+  background: #151922;
+  color: var(--ink);
+  border: 1px solid #2b3440;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+button:hover { border-color: var(--danger); }
+.settings label { display: block; margin: 0.6rem 0; }
+.settings input { width: 100%; background: #0f1217; color: var(--ink); border: 1px solid #2b3440; padding: 0.4rem; }
+.settings-actions { display: flex; gap: 0.5rem; }
+
+@media (max-width: 900px) {
+  .dashboard { grid-template-columns: 1fr; }
+  .metrics { gap: 0.5rem; }
+}
